@@ -29,3 +29,15 @@ $('#year').textContent = new Date().getFullYear();
 initHeroVideo();
 initGallery();
 initViewer();
+
+document.querySelectorAll('[data-team-photo]').forEach((img) => {
+  const fallback = () => {
+    const avatar = document.createElement('span');
+    avatar.className = 'team-avatar';
+    avatar.setAttribute('aria-label', img.alt);
+    avatar.textContent = img.dataset.teamPhoto;
+    img.replaceWith(avatar);
+  };
+  img.addEventListener('error', fallback, { once: true });
+  if (img.complete && img.naturalWidth === 0) fallback();
+});
