@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feedy · Alimentador automático para mascotas</title>
+<meta name="description" content="Feedy es un alimentador automático de mascotas con control de porciones. Conocé cómo lo desarrollamos y explorá su modelo 3D.">
+<link rel="stylesheet" href="src/styles.css">
+<script type="importmap">{"imports":{"three":"./vendor/three/three.module.js"}}</script>
+<link rel="icon" type="image/png" href="public/assets/logo/feedy%20solo%20logo.png">
+</head>
+<body>
+<a class="skip" href="#inicio">Saltar al contenido</a>
+<header class="site-header" id="top">
+  <div class="wrap bar">
+    <a class="brand" href="#inicio" aria-label="Feedy, inicio"><img data-logo alt="Feedy" height="40"><span class="brand-text" hidden>Feedy</span></a>
+    <button class="burger" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    <nav id="nav" aria-label="Principal">
+      <a href="#sobre">Sobre Feedy</a><a href="#funciona">Cómo funciona</a><a href="#componentes">Componentes</a><a href="#visor">Modelo 3D</a><a href="#galeria">Desarrollo</a><a href="#producto">Producto</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="inicio" class="hero">
+  <video class="hero-video" muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" disablepictureinpicture></video>
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <p class="eyebrow">Alimentador automático de mascotas</p>
+      <h1>Alimentación inteligente para quienes más querés</h1>
+      <p class="lead">Feedy dispensa porciones controladas en el horario que configurés, combinando electrónica, mecánica y software desarrollados desde cero.</p>
+      <div class="actions"><a class="btn primary" href="#sobre">Conocer Feedy</a><a class="btn ghost" href="#visor">Explorar en 3D</a></div>
+    </div>
+    <div class="hero-photo reveal" id="hero-photo"><div class="hero-fallback" aria-hidden="true"><img data-logo alt=""><span class="brand-text" hidden>Feedy</span></div></div>
+  </div>
+</section>
+
+<section id="sobre" class="section">
+  <div class="wrap">
+    <h2 class="reveal">Sobre Feedy</h2>
+    <p class="sub reveal">Un producto ya desarrollado que resuelve la alimentación diaria de tu mascota sin depender del reloj.</p>
+    <div class="cards three">
+      <article class="card reveal"><span class="ico">◔</span><h3>Alimentación automatizada</h3><p>Programás los horarios y Feedy se encarga de dispensar el alimento.</p></article>
+      <article class="card reveal"><span class="ico">⚖</span><h3>Control de porciones</h3><p>Definís cuánto recibe tu mascota en cada comida desde la interfaz web.</p></article>
+      <article class="card reveal"><span class="ico">⚙</span><h3>Electrónica y mecánica integradas</h3><p>Placas, servomotor, sinfín y piezas impresas en 3D trabajan como un solo sistema.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="funciona" class="section alt">
+  <div class="wrap">
+    <h2 class="reveal">Cómo funciona</h2>
+    <ol class="steps">
+      <li class="reveal"><b>1</b><h3>Configuración</h3><p>Elegís las porciones y los horarios desde la interfaz web.</p></li>
+      <li class="reveal"><b>2</b><h3>Procesamiento</h3><p>El sistema interpreta la configuración y decide cuándo dispensar.</p></li>
+      <li class="reveal"><b>3</b><h3>Control del servomotor</h3><p>Se acciona el servomotor según la porción definida.</p></li>
+      <li class="reveal"><b>4</b><h3>Sinfín</h3><p>El sinfín transporta el alimento hasta la salida.</p></li>
+      <li class="reveal"><b>5</b><h3>Dispensación</h3><p>El alimento cae al plato de tu mascota.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="componentes" class="section">
+  <div class="wrap">
+    <h2 class="reveal">Componentes</h2>
+    <div class="cards six">
+      <article class="card reveal"><h3>Raspberry Pi</h3><p>Parte del cerebro electrónico de Feedy.</p></article>
+      <article class="card reveal"><h3>Arduino Uno</h3><p>Placa de control integrada al sistema.</p></article>
+      <article class="card reveal"><h3>Servomotor</h3><p>Acciona el mecanismo de dispensación.</p></article>
+      <article class="card reveal"><h3>Sinfín</h3><p>Transporta el alimento hasta la salida.</p></article>
+      <article class="card reveal"><h3>Piezas impresas en 3D</h3><p>Estructura y piezas diseñadas a medida.</p></article>
+      <article class="card reveal"><h3>Interfaz web</h3><p>Configuración de porciones y horarios.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="visor" class="section alt">
+  <div class="wrap">
+    <h2 class="reveal">Explorá Feedy en 3D</h2>
+    <p class="sub reveal">Rotá, acercá y desplazá el modelo. También podés cargar tus propios archivos STL: se procesan en tu navegador y nunca se suben a ningún servidor.</p>
+    <div class="viewer" id="viewer" aria-label="Visor 3D">
+      <div class="viewer-stage" id="stage" tabindex="0" aria-label="Escena 3D: arrastrá para rotar, rueda para acercar, clic derecho para desplazar">
+        <div class="viewer-msg" id="viewer-msg" role="status" aria-live="polite"></div>
+        <div class="drop" id="drop" hidden>Soltá tu archivo STL acá</div>
+      </div>
+      <div class="toolbar">
+        <div class="info"><strong id="v-name">Sin modelo</strong><span id="v-dims">X – · Y – · Z –</span></div>
+        <div class="tools">
+          <button class="btn small" id="b-reset">Resetear cámara</button>
+          <button class="btn small" id="b-center">Centrar</button>
+          <button class="btn small toggle" id="b-wire" aria-pressed="false">Wireframe</button>
+          <button class="btn small toggle" id="b-grid" aria-pressed="true">Cuadrícula</button>
+          <label class="scale">Escala <input id="v-scale" type="range" min="0.25" max="2" step="0.05" value="1" aria-label="Escala del modelo"></label>
+          <label class="btn small primary file">Cargar STL<input id="v-file" type="file" accept=".stl" hidden></label>
+        </div>
+      </div>
+      <p class="hint">Rotar: arrastrar · Zoom: rueda o pellizcar · Pan: clic derecho o dos dedos. Las dimensiones están en las unidades del archivo (habitualmente mm).</p>
+    </div>
+  </div>
+</section>
+
+<section id="galeria" class="section">
+  <div class="wrap">
+    <h2 class="reveal">Galería del desarrollo</h2>
+    <p class="sub reveal">Del diseño 3D al producto terminado: así se construyó Feedy.</p>
+    <div class="filters" id="filters" role="group" aria-label="Filtrar por etapa"></div>
+    <div class="masonry" id="gallery"></div>
+    <p class="empty" id="gallery-empty" hidden>Las fotos del proceso aparecerán aquí muy pronto.</p>
+  </div>
+</section>
+
+<section id="producto" class="section alt">
+  <div class="wrap">
+    <h2 class="reveal">Producto terminado</h2>
+    <p class="sub reveal">Feedy desde distintos ángulos.</p>
+    <div class="product-grid" id="product-grid"></div>
+    <p class="empty" id="product-empty" hidden>Las fotos del producto terminado aparecerán aquí.</p>
+    <p class="center"><a class="btn primary" href="#visor">Ver el modelo 3D</a></p>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot">
+    <a class="brand" href="#inicio" aria-label="Feedy, volver arriba"><img data-logo alt="Feedy" height="36"><span class="brand-text" hidden>Feedy</span></a>
+    <nav aria-label="Pie"><a href="#sobre">Sobre Feedy</a><a href="#funciona">Cómo funciona</a><a href="#componentes">Componentes</a><a href="#visor">Modelo 3D</a><a href="#galeria">Desarrollo</a><a href="#producto">Producto</a></nav>
+    <p>© <span id="year"></span> Feedy · Proyecto desarrollado con electrónica, mecánica y software propios.</p>
+  </div>
+</footer>
+
+<dialog id="lightbox" aria-label="Foto ampliada">
+  <button class="lb-close" aria-label="Cerrar">×</button>
+  <button class="lb-nav prev" aria-label="Anterior">‹</button>
+  <figure><img alt=""><figcaption></figcaption></figure>
+  <button class="lb-nav next" aria-label="Siguiente">›</button>
+</dialog>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
